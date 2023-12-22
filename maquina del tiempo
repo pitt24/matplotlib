@@ -1,0 +1,43 @@
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
+# Crear una figura y ejes
+fig, ax = plt.subplots()
+
+# Definir las coordenadas de la cápsula central
+capsule_x = 0.5
+capsule_y = 0.5
+
+# Dibujar la cápsula central
+capsule = patches.Circle((capsule_x, capsule_y), 0.4, color='grey', alpha=0.8)
+ax.add_patch(capsule)
+
+# Dibujar nanocables
+nanocables = patches.ConnectionPatch((capsule_x, capsule_y), (capsule_x + 0.1, capsule_y + 0.1),
+                                     "data", "data", color="blue")
+ax.add_patch(nanocables)
+
+# Dibujar lentes gravitacionales
+gravitational_lenses = patches.Circle((capsule_x, capsule_y), 0.45, fill=False, edgecolor='cyan', linestyle='--')
+ax.add_patch(gravitational_lenses)
+
+# Dibujar estructura inspirada en Kirigami
+kirigami_structure = patches.Rectangle((capsule_x - 0.5, capsule_y - 0.5), 1, 1, fill=False, edgecolor='orange', linestyle='-.')
+ax.add_patch(kirigami_structure)
+
+# Dibujar fuente de energía nuclear
+nuclear_core = patches.Circle((capsule_x, capsule_y - 0.6), 0.1, color='blue', alpha=0.8)
+ax.add_patch(nuclear_core)
+
+# Dibujar pantalla visual
+visual_screen = patches.Rectangle((capsule_x - 0.2, capsule_y + 0.4), 0.4, 0.2, color='green', alpha=0.8)
+ax.add_patch(visual_screen)
+
+# Configurar detalles futuristas
+ax.set_facecolor('black')
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 1)
+ax.axis('off')
+
+# Mostrar la representación visual
+plt.show()
